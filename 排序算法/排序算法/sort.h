@@ -277,5 +277,74 @@ public:
 		//printV(arr);
 
 	}
+	static void merge(std::vector<int>& arr,int left,int right,int mid)
+	{
+		std::vector<int> another(0,arr.size());
+		for (int i = left; i <= right; i++)
+		{
+			another[i] = arr[i];
+		}
+		//比较b左右两段的元素把小的复制到arr中
+		for (int i = left, j = mid + 1,k=i; i <= mid, j <= right; k++)
+		{
+			if (another[i] > another[j])
+				arr[k] = another[j++];
+			else
+				arr[k] = another[i++];
+		}
+		while (i <= mid)
+		{
+			arr[k++] = another[i++];
+		}
+		while (j <= high)
+		{
+			arr[k++] = another[j++];
+		}
+
+	}
+	static void mergeSort(std::vector<int>& arr, int left, int right);
+	{
+		if (left > right)
+			return;
+		else
+		{
+			int mid = (left + right) / 2;
+			mergeSort(arr, left, mid);//左边有序
+			mergeSort(arr, mid + 1, right);//右边有序
+			merge(arr, left, right, mid);//归并
+		}
+	}
+	static void mergeSortNonR(std::vector<int>& arr, int left, int right)
+	{
+		std::stack<int> st;
+		int mid = (left + right) / 2;
+		st.push(left);
+		st.push(right);
+		while (!st.empty())
+		{
+			if (left < mid&& mid + 1 < right)
+			{
+				st.push(left);
+				st.push(mid);
+				st.push(mid + 1);
+				st.push(right);
+			
+			}
+			
+			else if (left + 1 == mid&&mid+1=right)
+			{
+				merge(ar, left, mid);
+				merge(arr, mid + 1, right);
+				st.pop();
+				st.pop();
+				st.pop();
+				st.pop();
+
+			}
+			
+			
+
+		}
+	}
 	
  };
