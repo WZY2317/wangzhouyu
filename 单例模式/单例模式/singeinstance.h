@@ -27,11 +27,28 @@ public:
 			mtx->lock();
 			if (instance == nullptr)
 			{
-				
+				instance = new Singleton();
+				return instance;
+			}
+			mtx->unlock();
+		}
+		return instance;
+	}
+	class CGarbo {
+	public:
+		~CGarbo()
+		{
+			if (Singleton::instance)
+			{
+				delete instance;
 			}
 		}
-	}
+	};
+	static CGarbo garbo;
 private:
+	Singleton() {};
+	Singleton(const Singleton&) = delete;
+	Singleton& operator=(const Singleton&) = delete;
 	static Singleton* instance;
-	mutex* mtx;
+	static mutex* mtx;
 };
