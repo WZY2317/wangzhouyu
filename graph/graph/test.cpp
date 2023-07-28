@@ -1,5 +1,5 @@
-#include"gragh.h"
+#include"graph.h"
 int main()
 {
-	TestGraph();
+	//TestGraphp();
 }

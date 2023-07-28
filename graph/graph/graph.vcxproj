@@ -139,7 +139,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="gragh.h" />
+    <ClInclude Include="graph.h" />
+    <ClInclude Include="unionSet.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="test.cpp" />
